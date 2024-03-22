@@ -1,0 +1,23 @@
+﻿@page
+@model Client.Pages.Stars.DetailsModel
+
+<div>
+    <h4>Star</h4>
+    <hr />
+    <dl class="row">
+        <h1>
+            List of movie of @Html.DisplayFor(model => model.Star.FullName)
+        </h1>
+    </dl>
+    @foreach (var item in Model.Star.Movies)
+    {
+        <dl class="row">
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.Title) - Release year:@Html.DisplayFor(model => item.ReleaseDate)
+            </dd>
+        </dl>
+    }
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

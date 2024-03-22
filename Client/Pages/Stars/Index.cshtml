@@ -1,0 +1,82 @@
+﻿@page
+@model Client.Pages.Stars.IndexModel
+<div>
+    <style>
+        form {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            form input,
+            form button {
+                padding: 5px;
+                margin: 5px;
+                font-size: 16px;
+            }
+
+            form button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+    </style>
+    <form method="get">
+        <label for="nationality">Nationality:</label>
+        <input type="text" name="Nationality" asp-for="Nationality" />
+
+        <label for="gender">Gender:</label>
+        <input type="text" name="Gender" asp-for="Gender" />
+        <div class="form-group">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Star[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star[0].Dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star[0].Nationality)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Star)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DobString)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
