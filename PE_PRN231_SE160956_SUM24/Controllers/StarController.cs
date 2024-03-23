@@ -1,5 +1,6 @@
 ﻿using BussinessObject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using PE_PRN231_SE160956_SUM24.Models;
 using Repository.IRepository;
 
@@ -18,7 +19,9 @@ namespace PE_PRN231_SE160956_SUM24.Controllers
             _movieRepository = movieRepository;
         }
 
+        [EnableQuery]
         [HttpGet]
+        //test post man http://localhost:5000/api/star/getstars/USA/Male?$top=3&$select=FullName,Nationality
         [Route("getstars/{nationality}/{gender}")]
         public Task<List<StarModels>> GetByNationalityAndGender(string nationality, string gender)
         {

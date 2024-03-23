@@ -121,7 +121,7 @@ app.Run();
 static IEdmModel GetEdmModel()
 {
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<Star>("Star");
+   // builder.EntitySet<Star>("Star");
     //builder.EntitySet<Users>("Users");
     //builder.EntitySet<Museums>("Museums");
     return builder.GetEdmModel();
